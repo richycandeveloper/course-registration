@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Faculty {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  createdAt   DateTime     @default(now())
+  departments Department[]
+
+  @@map("faculties")
+}
+
+model Department {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  facultyId Int?
+  faculty   Faculty? @relation(fields: [facultyId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+
+  @@map("departments")
+}
+
+// Singleton-style table: one row holds the currently active session/semester
+// and whether course registration is open to students.
+model Setting {
+  id               Int      @id @default(autoincrement())
+  currentSession   String   @default("2025/2026")
+  currentSemester  String   @default("First Semester")
+  registrationOpen Boolean  @default(true)
+  updatedAt        DateTime @updatedAt
+
+  @@map("settings")
+}
+
+// Students register with a matric number in the format:
+// imt/unn/b.sc/department/year/matricnumber
+model Student {
+  id            Int            @id @default(autoincrement())
+  firstName     String
+  lastName      String
+  matricNumber  String         @unique
+  department    String
+  level         String
+  year          String
+  password      String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  registrations Registration[]
+
+  @@map("students")
+}
+
+// Admins log in with email + password
+model Admin {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model Course {
+  id            Int            @id @default(autoincrement())
+  code          String         @unique
+  title         String
+  description   String?
+  units         Int            @default(3)
+  department    String
+  level         String
+  semester      String         @default("First Semester")
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  registrations Registration[]
+
+  @@map("courses")
+}
+
+model Registration {
+  id           Int      @id @default(autoincrement())
+  studentId    Int
+  courseId     Int
+  status       String   @default("Registered") // Registered | Dropped
+  session      String   @default("2025/2026")
+  semester     String   @default("First Semester")
+  registeredAt DateTime @default(now())
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course  Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, courseId])
+  @@map("registrations")
+}
