@@ -10,17 +10,18 @@
   },
   "dependencies": {
     "@prisma/client": "^5.0.0",
+    "aos": "^2.3.4",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "jose": "^5.2.0",
     "next": "14.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "bcryptjs": "^2.4.3",
-    "jose": "^5.2.0",
-    "dotenv": "^16.4.5"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "prisma": "^5.0.0",
-    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
     "postcss": "^8.4.0",
-    "autoprefixer": "^10.4.0"
+    "prisma": "^5.0.0",
+    "tailwindcss": "^3.4.0"
   }
 }

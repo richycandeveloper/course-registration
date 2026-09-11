@@ -1,6 +1,6 @@
 import { Poppins, Inter } from "next/font/google";
+import "aos/dist/aos.css";
 import "./globals.css";
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
