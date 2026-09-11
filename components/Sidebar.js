@@ -52,10 +52,10 @@ function NavLinks({ links, pathname, onNavigate }) {
             key={link.href}
             href={link.href}
             onClick={onNavigate}
-            className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition ${
+            className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium text-white transition ${
               active
-                ? "bg-white/10 text-white"
-                : "text-navy-100/70 hover:bg-white/5 hover:text-white"
+                ? "bg-white/15 opacity-100"
+                : "opacity-70 hover:bg-white/10 hover:opacity-100"
             }`}
           >
             <svg
@@ -120,7 +120,7 @@ export default function Sidebar({ role = "student" }) {
               </button>
             </div>
             <NavLinks links={links} pathname={pathname} onNavigate={() => setMobileOpen(false)} />
-            <div className="border-t border-white/10 px-6 py-4 text-xs text-navy-100/50">
+            <div className="border-t border-white/10 px-6 py-4 text-xs text-white/50">
               {role === "admin" ? "Administrator access" : "Student access"}
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function Sidebar({ role = "student" }) {
           <Logo variant="light" />
         </div>
         <NavLinks links={links} pathname={pathname} />
-        <div className="border-t border-white/10 px-6 py-4 text-xs text-navy-100/50">
+        <div className="border-t border-white/10 px-6 py-4 text-xs text-white/50">
           {role === "admin" ? "Administrator access" : "Student access"}
         </div>
       </aside>
