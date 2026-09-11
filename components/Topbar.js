@@ -21,14 +21,14 @@ export default function Topbar({ title, subtitle, user }) {
     : "?";
 
   return (
-    <header className="flex items-center justify-between border-b border-line bg-white px-8 py-5">
+    <header className="flex items-center justify-between border-b border-line bg-white px-4 py-4 sm:px-8 sm:py-5">
       <div>
-        <h1 className="font-display text-xl font-semibold text-navy-900">
+        <h1 className="font-display text-lg font-semibold text-navy-900 sm:text-xl">
           {title}
         </h1>
-        {subtitle && <p className="mt-0.5 text-sm text-ink-soft">{subtitle}</p>}
+        {subtitle && <p className="mt-0.5 text-xs text-ink-soft sm:text-sm">{subtitle}</p>}
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <div className="hidden text-right sm:block">
           <p className="text-sm font-medium text-ink">{user?.name}</p>
           <p className="text-xs text-ink-soft">

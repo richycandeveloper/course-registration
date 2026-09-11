@@ -12,8 +12,8 @@ export default function RegistrationTable({ registrations, role = "student", onD
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-line bg-white">
-      <table className="w-full text-left text-sm">
+    <div className="overflow-x-auto rounded-lg border border-line bg-white">
+      <table className="w-full min-w-[640px] text-left text-sm">
         <thead className="bg-navy-900/5 text-xs font-semibold uppercase tracking-wide text-ink-soft">
           <tr>
             {role === "admin" && <th className="px-5 py-3">Student</th>}

@@ -23,11 +23,11 @@ export default function AdminStudentsPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-paper">
+    <div className="flex min-h-screen flex-col bg-paper md:flex-row">
       <Sidebar role="admin" />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <Topbar title="Students" subtitle={`${students.length} enrolled`} user={user} />
-        <main className="p-8">
+        <main className="p-4 sm:p-8">
           {loading ? (
             <p className="text-sm text-ink-soft">Loading…</p>
           ) : students.length === 0 ? (
@@ -35,8 +35,8 @@ export default function AdminStudentsPage() {
               No students have registered yet.
             </div>
           ) : (
-            <div className="overflow-hidden rounded-lg border border-line bg-white">
-              <table className="w-full text-left text-sm">
+            <div className="overflow-x-auto rounded-lg border border-line bg-white">
+              <table className="w-full min-w-[640px] text-left text-sm">
                 <thead className="bg-navy-900/5 text-xs font-semibold uppercase tracking-wide text-ink-soft">
                   <tr>
                     <th className="px-5 py-3">Name</th>

@@ -75,15 +75,15 @@ export default function AdminDepartmentsPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-paper">
+    <div className="flex min-h-screen flex-col bg-paper md:flex-row">
       <Sidebar role="admin" />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <Topbar
           title="Faculties & Departments"
           subtitle="Manage the academic structure of the institute"
           user={user}
         />
-        <main className="p-8">
+        <main className="p-4 sm:p-8">
           {error && (
             <div className="mb-5 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
               {error}

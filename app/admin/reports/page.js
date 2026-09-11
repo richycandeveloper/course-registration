@@ -32,15 +32,15 @@ export default function AdminReportsPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-paper">
+    <div className="flex min-h-screen flex-col bg-paper md:flex-row">
       <Sidebar role="admin" />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <Topbar
           title="Reports"
           subtitle="Registration summary for the current session"
           user={user}
         />
-        <main className="p-8">
+        <main className="p-4 sm:p-8">
           {loading ? (
             <p className="text-sm text-ink-soft">Loading…</p>
           ) : (
@@ -51,7 +51,7 @@ export default function AdminReportsPage() {
                 <StatCard label="Courses with enrolment" value={uniqueCourses} hint="Active" />
               </div>
 
-              <div className="mt-8 flex items-center justify-between rounded-lg border border-line bg-white p-6">
+              <div className="mt-8 flex flex-col gap-4 rounded-lg border border-line bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h2 className="font-display text-base font-semibold text-navy-900">
                     Full registration report

@@ -29,13 +29,13 @@ export default function RegistrationSlipPage() {
   const [, , programme, department, year] = parts;
 
   if (loading) {
-    return <div className="p-10 text-sm text-ink-soft">Loading your slip…</div>;
+    return <div className="p-6 text-sm text-ink-soft sm:p-10">Loading your slip…</div>;
   }
 
   return (
-    <div className="min-h-screen bg-paper py-10">
+    <div className="min-h-screen bg-paper py-6 sm:py-10">
       {/* Screen-only toolbar, hidden when printing */}
-      <div className="mx-auto mb-6 flex max-w-3xl items-center justify-between px-6 print:hidden">
+      <div className="mx-auto mb-6 flex max-w-3xl flex-col gap-3 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 print:hidden">
         <Link href="/student/registration" className="text-sm font-medium text-navy-900 hover:underline">
           ← Back to My Registration
         </Link>
@@ -48,28 +48,28 @@ export default function RegistrationSlipPage() {
       </div>
 
       {/* Printable slip */}
-      <div className="mx-auto max-w-3xl bg-white p-10 shadow-sm print:shadow-none">
-        <div className="flex items-center justify-between border-b-2 border-navy-900 pb-5">
+      <div className="mx-auto max-w-3xl bg-white p-5 shadow-sm sm:p-10 print:shadow-none">
+        <div className="flex flex-col gap-3 border-b-2 border-navy-900 pb-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-display text-lg font-semibold text-navy-900">
+            <p className="font-display text-base font-semibold text-navy-900 sm:text-lg">
               Institute of Management &amp; Technology
             </p>
             <p className="text-sm text-ink-soft">Course Registration Slip</p>
           </div>
-          <div className="text-right text-xs text-ink-soft">
+          <div className="text-left text-xs text-ink-soft sm:text-right">
             <p>{settings?.currentSession}</p>
             <p>{settings?.currentSemester}</p>
           </div>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+        <div className="mt-6 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
           <div>
             <p className="text-xs uppercase tracking-wide text-ink-soft">Full Name</p>
             <p className="font-medium text-ink">{user?.name}</p>
           </div>
           <div>
             <p className="text-xs uppercase tracking-wide text-ink-soft">Matric Number</p>
-            <p className="font-medium text-ink">{user?.matricNumber}</p>
+            <p className="break-all font-medium text-ink">{user?.matricNumber}</p>
           </div>
           <div>
             <p className="text-xs uppercase tracking-wide text-ink-soft">Department</p>
@@ -83,39 +83,41 @@ export default function RegistrationSlipPage() {
           </div>
         </div>
 
-        <table className="mt-8 w-full text-left text-sm">
-          <thead>
-            <tr className="border-y border-line text-xs uppercase tracking-wide text-ink-soft">
-              <th className="py-2">Code</th>
-              <th className="py-2">Course Title</th>
-              <th className="py-2">Units</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-line">
-            {registrations.map((r) => (
-              <tr key={r.id}>
-                <td className="py-2.5 font-medium text-ink">{r.course.code}</td>
-                <td className="py-2.5 text-ink-soft">{r.course.title}</td>
-                <td className="py-2.5 text-ink-soft">{r.course.units}</td>
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full min-w-[420px] text-left text-sm">
+            <thead>
+              <tr className="border-y border-line text-xs uppercase tracking-wide text-ink-soft">
+                <th className="py-2">Code</th>
+                <th className="py-2">Course Title</th>
+                <th className="py-2">Units</th>
               </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr className="border-t-2 border-navy-900">
-              <td colSpan={2} className="py-2.5 text-right font-semibold text-navy-900">
-                Total Units
-              </td>
-              <td className="py-2.5 font-semibold text-navy-900">{totalUnits}</td>
-            </tr>
-          </tfoot>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-line">
+              {registrations.map((r) => (
+                <tr key={r.id}>
+                  <td className="py-2.5 font-medium text-ink">{r.course.code}</td>
+                  <td className="py-2.5 text-ink-soft">{r.course.title}</td>
+                  <td className="py-2.5 text-ink-soft">{r.course.units}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr className="border-t-2 border-navy-900">
+                <td colSpan={2} className="py-2.5 text-right font-semibold text-navy-900">
+                  Total Units
+                </td>
+                <td className="py-2.5 font-semibold text-navy-900">{totalUnits}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
 
-        <div className="mt-10 flex justify-between text-xs text-ink-soft">
+        <div className="mt-10 flex flex-col gap-1 text-xs text-ink-soft sm:flex-row sm:justify-between">
           <p>Generated on {new Date().toLocaleDateString()}</p>
           <p>Status: Confirmed</p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-10 text-xs text-ink-soft">
+        <div className="mt-10 grid grid-cols-1 gap-8 text-xs text-ink-soft sm:grid-cols-2 sm:gap-10">
           <div className="border-t border-line pt-2">Student&apos;s Signature</div>
           <div className="border-t border-line pt-2">Registrar&apos;s Signature</div>
         </div>

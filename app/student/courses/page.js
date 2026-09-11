@@ -79,15 +79,15 @@ export default function StudentCoursesPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-paper">
+    <div className="flex min-h-screen flex-col bg-paper md:flex-row">
       <Sidebar role="student" />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <Topbar
           title="Course Catalogue"
           subtitle="Register for courses offered this semester"
           user={user}
         />
-        <main className="p-8">
+        <main className="p-4 sm:p-8">
           {!loading && settings && !settings.registrationOpen && (
             <div className="mb-5 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
               Course registration is currently closed for {settings.currentSession} — {settings.currentSemester}. You can browse courses, but registering and dropping are disabled until it reopens.

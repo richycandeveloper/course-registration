@@ -17,11 +17,11 @@ export default function StudentProfilePage() {
   const [, , programme, department, year] = parts;
 
   return (
-    <div className="flex min-h-screen bg-paper">
+    <div className="flex min-h-screen flex-col bg-paper md:flex-row">
       <Sidebar role="student" />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <Topbar title="Profile" subtitle="Your account details" user={user} />
-        <main className="p-8">
+        <main className="p-4 sm:p-8">
           <div className="max-w-lg rounded-lg border border-line bg-white p-6">
             <div className="flex items-center gap-4 border-b border-line pb-5">
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-navy-900 font-display text-lg font-semibold text-white">

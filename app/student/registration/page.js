@@ -38,15 +38,15 @@ export default function StudentRegistrationPage() {
   );
 
   return (
-    <div className="flex min-h-screen bg-paper">
+    <div className="flex min-h-screen flex-col bg-paper md:flex-row">
       <Sidebar role="student" />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <Topbar
           title="My Registration"
           subtitle={`${registrations.length} course(s) · ${totalUnits} units`}
           user={user}
         />
-        <main className="p-8">
+        <main className="p-4 sm:p-8">
           <div className="mb-5 flex justify-end">
             <Link
               href="/student/registration/slip"

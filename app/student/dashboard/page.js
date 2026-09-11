@@ -36,15 +36,15 @@ export default function StudentDashboard() {
   );
 
   return (
-    <div className="flex min-h-screen bg-paper">
+    <div className="flex min-h-screen flex-col bg-paper md:flex-row">
       <Sidebar role="student" />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <Topbar
           title="Dashboard"
           subtitle="Overview of your current semester"
           user={user}
         />
-        <main className="p-8">
+        <main className="p-4 sm:p-8">
           {loading ? (
             <p className="text-sm text-ink-soft">Loading your dashboard…</p>
           ) : (
