@@ -10,7 +10,8 @@ module.exports = {
         sans: ["var(--font-inter)", "sans-serif"],
         display: ["var(--font-poppins)", "sans-serif"],
       },
-             navy: {
+      colors: {
+        navy: {
           950: "#081a2e",
           900: "#0b2545",
           800: "#123763",

@@ -25,32 +25,6 @@ body {
   color: var(--color-ink);
 }
 
-/* Scroll-reveal: one deliberate entrance treatment, applied via the
-   ScrollReveal component. Respects reduced-motion preferences. */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* Subtle shared focus ring for accessibility */
 :focus-visible {
   outline: 2px solid var(--color-gold-500);
   outline-offset: 2px;
